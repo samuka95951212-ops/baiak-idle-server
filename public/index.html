@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baiak Idle - Servidor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Login/Register -->
+    <div id="authSection" class="auth-section">
+      <h1>🎮 Baiak Idle Server</h1>
+      
+      <div class="auth-tabs">
+        <button class="tab-btn active" onclick="showTab('login')">Login</button>
+        <button class="tab-btn" onclick="showTab('register')">Registro</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login" class="tab-content active">
+        <input type="text" id="loginUsername" placeholder="Usuário">
+        <input type="password" id="loginPassword" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+      </div>
+
+      <!-- Register Form -->
+      <div id="register" class="tab-content">
+        <input type="text" id="regUsername" placeholder="Usuário">
+        <input type="email" id="regEmail" placeholder="Email">
+        <input type="password" id="regPassword" placeholder="Senha">
+        <button onclick="register()">Criar Conta</button>
+      </div>
+    </div>
+
+    <!-- Game Section -->
+    <div id="gameSection" class="game-section" style="display: none;">
+      <div class="header">
+        <h1>Baiak Idle</h1>
+        <button onclick="logout()" class="logout-btn">Sair</button>
+      </div>
+
+      <!-- Character Selection -->
+      <div id="charSelection" class="char-selection">
+        <h2>Meus Personagens</h2>
+        <div id="charactersList" class="characters-list"></div>
+        <div class="char-input">
+          <input type="text" id="charName" placeholder="Nome do personagem">
+          <button onclick="createCharacter()">Criar Personagem</button>
+        </div>
+      </div>
+
+      <!-- Game Dashboard -->
+      <div id="gameDashboard" class="game-dashboard" style="display: none;">
+        <div class="player-info">
+          <h2 id="playerName"></h2>
+          <div class="stats">
+            <div class="stat">
+              <span>Level</span>
+              <strong id="playerLevel"></strong>
+            </div>
+            <div class="stat">
+              <span>XP</span>
+              <strong id="playerExp"></strong>
+            </div>
+            <div class="stat">
+              <span>Ouro</span>
+              <strong id="playerGold"></strong>
+            </div>
+            <div class="stat">
+              <span>Gemas</span>
+              <strong id="playerGems"></strong>
+            </div>
+            <div class="stat">
+              <span>Energia</span>
+              <strong id="playerEnergy"></strong>/<strong id="playerMaxEnergy"></strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button onclick="harvest()" class="btn-primary">🌾 Colher (10 ouro)</button>
+          <button onclick="attack()" class="btn-primary">⚔️ Atacar (10 energia)</button>
+          <button onclick="restoreEnergy()" class="btn-secondary">⚡ Restaurar Energia (1 gema)</button>
+        </div>
+
+        <div class="upgrades">
+          <h3>Upgrades Disponíveis</h3>
+          <div class="upgrades-list">
+            <div class="upgrade-item" onclick="buyUpgrade('gold_boost', 'Multiplicador de Ouro', 50)">
+              <span>💰 Multiplicador Ouro</span>
+              <span>Custo: 50 ouro</span>
+            </div>
+            <div class="upgrade-item" onclick="buyUpgrade('exp_boost', 'Multiplicador XP', 75)">
+              <span>⭐ Multiplicador XP</span>
+              <span>Custo: 75 ouro</span>
+            </div>
+            <div class="upgrade-item" onclick="buyUpgrade('energy_max', 'Max Energia +10', 100)">
+              <span>⚡ Max Energia +10</span>
+              <span>Custo: 100 ouro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="inventory">
+          <h3>Inventário</h3>
+          <div id="inventoryList" class="inventory-list"></div>
+        </div>
+
+        <button onclick="backToCharSelect()" class="btn-back">Voltar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
